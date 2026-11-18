@@ -1,319 +1,637 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Riya Ann Varghese | Cybersecurity & IT Portfolio</title>
-  <meta name="description" content="Cybersecurity and IT portfolio of Riya Varghese — security learning, IT fundamentals, technical documentation, and projects." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RIYA.md — Riya Ann Varghese, Senior GRC Engineer</title>
+<meta name="description" content="Riya Ann Varghese — Senior GRC Engineer, ISO 27001 Lead Auditor, compliance automation and security.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Cutive+Mono&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* muted editorial palette (variable names kept so the content object still reads) */
+  --ink:#1c1b1d; --paper:#f2eee8; --accent:#c4502a;
+  --pink:#d9b8b0;   /* dusty rose */
+  --cobalt:#3d4f6b; /* slate blue */
+  --mint:#a9b8a0;   /* sage */
+  --butter:#e6d5b8; /* sand */
+  --lilac:#c6b9c2;  /* muted mauve */
+  --sky:#b3c2cb;    /* mist blue */
+  --forest:#1f3329; /* deep green */
+  --stone:#d6cec2;  /* warm stone */
+  --accent-lt:#ec9470; /* rust, lifted for dark backgrounds */
+  --f-display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
+  --f-mono:"Cutive Mono",ui-monospace,Menlo,monospace;
+  --f-serif:"Instrument Serif",Georgia,serif;
+  --pad:clamp(16px,2.4vw,40px);
+  --fs-word:clamp(52px,9vw,170px);
+  --fs-say:clamp(30px,4.6vw,88px);
+  --fs-note:clamp(16px,1.5vw,26px);
+  --fs-mono:clamp(14px,1.3vw,20px);
+  --ease:cubic-bezier(.16,1,.3,1);
+  --hud-fg:var(--paper);
+  --hud-inv:var(--ink);
+}
+*,*:before,*:after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--ink);color:var(--paper);font-family:var(--f-display);font-weight:300;line-height:1.3;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body[data-hud=light]{--hud-fg:var(--ink);--hud-inv:var(--paper)}
+p,h1,h2,h3,ul,ol,blockquote{margin:0;padding:0}
+ul,ol{list-style:none}
+a{color:inherit}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+::selection{background:var(--accent);color:var(--ink)}
+.md{font-family:var(--f-mono);color:var(--acc,var(--accent));font-weight:400;letter-spacing:0}
+em,.serif{font-family:var(--f-serif);font-style:italic;font-weight:400}
+
+/* ---------- atmosphere ---------- */
+#bg{position:fixed;inset:0;z-index:-2;background:var(--ink);transition:background-color .6s var(--ease)}
+.grain{position:fixed;inset:-50%;z-index:90;pointer-events:none;opacity:.09;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation:grain 1s steps(6) infinite}
+@keyframes grain{0%{transform:translate(0,0)}20%{transform:translate(-3%,2%)}40%{transform:translate(2%,-3%)}60%{transform:translate(-2%,-1%)}80%{transform:translate(3%,3%)}100%{transform:translate(0,0)}}
+.cursor{position:fixed;left:0;top:0;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;background:var(--accent);z-index:120;pointer-events:none;transition:width .3s var(--ease),height .3s var(--ease),margin .3s var(--ease),opacity .3s;opacity:0}
+.cursor.big{width:44px;height:44px;margin:-22px 0 0 -22px;opacity:.35!important}
+@media (pointer:fine){.cursor{opacity:1}}
+
+/* ---------- HUD ---------- */
+.hud{position:fixed;z-index:60;top:max(var(--pad),22px);left:var(--pad);right:var(--pad);display:flex;justify-content:space-between;align-items:center;color:var(--hud-fg);transition:color .6s var(--ease);pointer-events:none}
+.hud>*{pointer-events:auto}
+.hud__l,.hud__r{display:flex;align-items:center;gap:6px}
+.pill{display:inline-flex;align-items:center;gap:.6em;height:42px;padding:0 17px;border-radius:999px;font-size:15px;font-weight:700;letter-spacing:-.01em;white-space:nowrap;border:1px solid transparent;text-decoration:none}
+.logo{width:54px;height:54px;display:grid;place-items:center;margin-right:8px;color:var(--hud-fg)}
+.logo svg{width:100%;height:100%;transition:transform .8s var(--ease)}
+.logo:hover svg{transform:rotate(-18deg) scale(1.06)}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--accent);display:inline-block;animation:blink 2.4s infinite}
+@keyframes blink{0%,70%,100%{opacity:1}80%{opacity:.2}}
+.crumb{opacity:0;max-width:0;padding:0;border-width:0;overflow:hidden;transition:max-width .9s var(--ease),padding .9s var(--ease),opacity .5s}
+.crumb.on{opacity:1;max-width:420px;padding:0 17px;border-color:currentColor}
+.crumb .md{color:inherit;opacity:.55}
+.pink{background:var(--pink);color:var(--ink)}
+.hud .pink{background:var(--hud-fg);color:var(--hud-inv);transition:background .6s var(--ease),color .6s var(--ease)}
+.burger{display:grid;gap:4px;width:14px}.burger i{display:block;height:1.5px;background:currentColor}
+@media (max-width:640px){.crumb{display:none}.logo{width:42px;height:42px}.pill{height:38px;padding:0 14px;font-size:14px}}
+
+.hint{position:fixed;z-index:50;left:50%;bottom:28px;transform:translateX(-50%);font-family:var(--f-mono);font-size:14px;color:var(--hud-fg);display:flex;flex-direction:column;align-items:center;gap:8px;transition:opacity .5s,color .6s}
+.hint i{width:1px;height:36px;background:currentColor;transform-origin:top;animation:drip 1.8s var(--ease) infinite}
+@keyframes drip{0%{transform:scaleY(0)}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+body.scrolled .hint{opacity:0}
+
+/* ---------- scenes ---------- */
+.scene{position:relative}
+.stick{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;display:flex;flex-direction:column;justify-content:center;padding:0 var(--pad)}
+.wrap{max-width:1500px;margin:0 auto;width:100%}
+
+/* dark scenes get the lifted accent */
+.open,.say,.receipts,.log,.outro,.index{--acc:var(--accent-lt)}
+.edu .h2{color:var(--pink)}
+
+/* opening */
+.open{height:230vh;color:var(--paper)}
+.open .stick{clip-path:circle(0% at 50% 55%);transition:clip-path 1.6s var(--ease)}
+body.ready .open .stick{clip-path:circle(150% at 50% 55%)}
+.open__sun{position:absolute;width:min(62vw,62vh);aspect-ratio:1;border-radius:50%;background:var(--accent);right:-8vw;top:14vh;
+  transform:translateY(calc(var(--p) * -60vh)) scale(calc(1 + var(--p) * .4));filter:blur(.5px)}
+.open__floor{position:absolute;left:0;right:0;bottom:0;height:22vh;background:var(--pink);transform:translateY(calc(var(--p) * 30vh))}
+.open__floor:before{content:"";position:absolute;left:8vw;top:-4vh;width:28vw;height:4vh;background:var(--butter);border-radius:4px 4px 0 0}
+.open__set{position:relative;transform:translateY(calc(var(--p) * -55vh));opacity:calc(1 - var(--p) * 1.4)}
+.byline{font-family:var(--f-mono);font-size:var(--fs-mono);letter-spacing:.02em}
+.title{font-size:clamp(84px,19vw,340px);font-weight:800;letter-spacing:-.055em;line-height:.82;margin:.12em 0 .18em -.04em}
+.title .md{font-size:.42em;letter-spacing:-.02em;margin-left:.06em}
+.title .ch{display:inline-block;transform:translateY(105%);transition:transform 1.2s var(--ease)}
+body.ready .title .ch{transform:none}
+.mask{display:inline-block;overflow:hidden;vertical-align:bottom;padding:.1em .04em 0;margin:-.1em -.04em 0}
+.quote{font-family:var(--f-mono);font-size:var(--fs-mono);line-height:1.6}
+.quote p{opacity:0;transform:translateY(8px);transition:opacity .8s,transform .8s var(--ease)}
+body.ready .quote p{opacity:1;transform:none}
+
+/* say: words that land as you scroll */
+.say{height:320vh}
+.say .stick{justify-content:center}
+.h2{font-family:var(--f-mono);color:var(--acc,var(--accent));font-size:var(--fs-mono);margin-bottom:1.4em;font-weight:400}
+.words{font-size:var(--fs-say);font-weight:600;letter-spacing:-.035em;line-height:1.02;max-width:17em}
+.words .w{display:inline-block;opacity:clamp(.1,calc(var(--p) * var(--n) * 1.35 - var(--i)),1);transform:translateY(calc((1 - clamp(0,calc(var(--p) * var(--n) * 1.35 - var(--i)),1)) * .25em))}
+.words em{font-weight:400}
+.say .note{margin-top:2em;font-size:var(--fs-note);max-width:34em;opacity:clamp(0,calc((var(--p) - .78) * 6),1)}
+
+/* receipts: the big numbers */
+.receipts{padding:16vh var(--pad) 24vh}
+.rc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0 6vw}
+@media (max-width:760px){.rc-grid{grid-template-columns:1fr}}
+.rc{border-top:1.5px solid rgba(243,238,230,.3);padding:4vh 0 6vh;opacity:0;transform:translateY(40px);transition:opacity .8s var(--d),transform 1s var(--ease) var(--d)}
+.rc.in{opacity:1;transform:none}
+.rc__big{font-size:clamp(84px,13vw,230px);font-weight:800;letter-spacing:-.06em;line-height:.85}
+.rc__big .md{font-size:.22em;letter-spacing:0;margin-left:.3em;vertical-align:.25em}
+.rc__l{font-size:var(--fs-note);max-width:22em;margin-top:.6em;opacity:.85}
+
+/* principle rooms */
+.room{height:260vh}
+.room .stick{color:var(--fg,var(--ink))}
+.room__n{font-family:var(--f-mono);font-size:var(--fs-mono)}
+.room__big{font-size:var(--fs-word);font-weight:800;letter-spacing:-.05em;line-height:.88;margin:.2em 0 .35em}
+.room__big .line{display:block;overflow:hidden;padding-top:.06em}
+.room__big .line span{display:inline-block;transform:translateY(calc((1 - clamp(0,calc(var(--p) * 4 - var(--i) * .5),1)) * 110%))}
+.room__body{font-size:var(--fs-note);max-width:30em;line-height:1.4;opacity:clamp(0,calc((var(--p) - .42) * 4),1);transform:translateY(calc((1 - clamp(0,calc((var(--p) - .42) * 4),1)) * 30px))}
+.room__body p+p{margin-top:.8em}
+.room__art{position:absolute;right:calc(var(--pad) * 1.5);bottom:8vh;width:min(36vw,46vh);color:var(--fg,var(--ink));
+  transform:rotate(calc(var(--p) * 140deg - 40deg)) scale(calc(.7 + var(--p) * .45));opacity:.95}
+.room__art svg{width:100%;height:auto;overflow:visible}
+@media (max-width:760px){.room__art{width:46vw;bottom:auto;top:12vh;opacity:.5}}
+
+/* work: stacked cards */
+.work{padding:22vh var(--pad) 30vh;color:var(--ink)}
+.work__head{max-width:1500px;margin:0 auto 10vh}
+.work__head .big{font-size:var(--fs-word);font-weight:800;letter-spacing:-.05em;line-height:.9}
+.cards{max-width:1100px;margin:0 auto}
+.card{position:sticky;top:calc(16vh + var(--i) * 18px);margin-bottom:14vh;border-radius:28px;padding:clamp(22px,3.4vw,52px);min-height:58vh;
+  display:grid;grid-template-columns:1fr auto;grid-template-rows:auto 1fr auto;gap:18px 30px;background:var(--c);color:var(--cf,var(--ink));
+  box-shadow:0 -10px 40px rgba(0,0,0,.12);transform:rotate(var(--r));transition:transform .6s var(--ease)}
+.card:hover{transform:rotate(0deg) scale(1.01)}
+.card__n{font-family:var(--f-mono);font-size:var(--fs-mono)}
+.card__yr{font-family:var(--f-mono);font-size:var(--fs-mono);text-align:right}
+.card h3{grid-column:1/-1;font-size:clamp(40px,6.4vw,118px);font-weight:800;letter-spacing:-.05em;line-height:.9;align-self:end}
+.card h3 .md{color:inherit;opacity:.45;font-size:.4em;vertical-align:.7em;margin-right:.2em}
+.card__d{font-size:var(--fs-note);max-width:30em;line-height:1.4}
+.card__tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.card__tags li{font-family:var(--f-mono);font-size:13px;border:1px solid currentColor;border-radius:999px;padding:5px 11px}
+.card__go{align-self:end;justify-self:end;width:clamp(64px,7vw,96px);aspect-ratio:1;border-radius:50%;background:var(--cf,var(--ink));color:var(--c);display:grid;place-items:center;font-size:clamp(24px,2.6vw,36px);text-decoration:none;transition:transform .5s var(--ease)}
+.card__go:hover{transform:rotate(-45deg)}
+@media (max-width:640px){.card{grid-template-columns:1fr;min-height:64vh}.card__yr{text-align:left}.card__go{justify-self:start}}
+
+/* building next: a markdown checklist */
+.next{padding:22vh var(--pad);color:var(--ink)}
+.next .wrap{max-width:1100px}
+.next .big{font-size:var(--fs-word);font-weight:800;letter-spacing:-.05em;line-height:.9;margin-bottom:8vh}
+.todo{display:grid;grid-template-columns:auto 1fr;gap:6px 22px;padding:30px 0;border-top:1.5px solid var(--ink);opacity:0;transform:translateY(30px);transition:opacity .8s,transform .9s var(--ease)}
+.todo.in{opacity:1;transform:none}
+.todo__box{font-family:var(--f-mono);font-size:clamp(20px,2.4vw,40px);line-height:1}
+.todo__box b{display:inline-block;width:.7em;text-align:center;color:var(--accent);font-weight:400;animation:blink 1.6s infinite}
+.todo h3{font-size:clamp(26px,3.4vw,58px);font-weight:800;letter-spacing:-.04em;line-height:.95}
+.todo p{grid-column:2;font-size:var(--fs-note);max-width:34em;line-height:1.4}
+.todo ul{grid-column:2;display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.todo li{font-family:var(--f-mono);font-size:13px;border:1px solid currentColor;border-radius:999px;padding:5px 11px}
+.todo li:first-child:before{content:"proves → ";opacity:.6}
+
+/* log */
+.log{padding:22vh var(--pad);color:var(--paper)}
+.log .wrap{max-width:1100px}
+.log__cmd{font-family:var(--f-mono);font-size:var(--fs-mono);margin-bottom:5vh}
+.log__cmd b{color:var(--mint);font-weight:400}
+.commit{display:grid;grid-template-columns:7em 1fr;gap:6px 28px;padding:28px 0;border-top:1px solid rgba(243,238,230,.25);opacity:0;transform:translateY(30px);transition:opacity .8s,transform .9s var(--ease)}
+.commit.in{opacity:1;transform:none}
+.edu .log__cmd b{color:var(--pink)}
+.edu .commit{border-top-color:rgba(243,238,230,.35)}
+.edu .commit__hash{color:var(--pink)}
+.commit__hash{font-family:var(--f-mono);color:var(--butter);font-size:var(--fs-mono)}
+.commit__t{font-size:clamp(24px,3vw,52px);font-weight:700;letter-spacing:-.03em;line-height:1}
+.commit__m{grid-column:2;font-family:var(--f-mono);font-size:var(--fs-mono);opacity:.75}
+.commit__d{grid-column:2;font-size:var(--fs-note);max-width:34em;margin-top:6px}
+@media (max-width:640px){.commit{grid-template-columns:1fr}.commit__m,.commit__d{grid-column:1}}
+
+/* lists */
+.lists{padding:22vh var(--pad);color:var(--ink)}
+.lists .wrap{display:grid;grid-template-columns:1fr 1fr;gap:6vw}
+@media (max-width:760px){.lists .wrap{grid-template-columns:1fr;gap:12vh}}
+.lists h2{font-size:clamp(34px,4.4vw,80px);font-weight:800;letter-spacing:-.045em;line-height:.95;margin-bottom:.7em}
+.lists h2 .md{font-size:.4em;display:block;margin-bottom:.6em;color:var(--ink);opacity:.6}
+.lists li{font-size:clamp(20px,2.1vw,36px);letter-spacing:-.02em;line-height:1.15;padding:.42em 0;border-top:1.5px solid var(--ink);position:relative}
+.lists li:before{content:"- ";font-family:var(--f-mono)}
+.stop li span{position:relative}
+.stop li span:after{content:"";position:absolute;left:-.1em;right:-.1em;top:55%;height:.09em;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform 1s var(--ease) var(--d)}
+.stop.in li span:after{transform:scaleX(1)}
+.more li{opacity:0;transform:translateX(-20px);transition:opacity .7s var(--d),transform .9s var(--ease) var(--d)}
+.more.in li{opacity:1;transform:none}
+
+/* outro */
+.outro{min-height:100vh;padding:24vh var(--pad) 8vh;display:flex;flex-direction:column;justify-content:space-between;color:var(--paper)}
+.outro__big{font-family:var(--f-serif);font-style:italic;font-size:clamp(46px,8vw,150px);line-height:.95;letter-spacing:-.02em;max-width:13em}
+.outro__big b{font-family:var(--f-display);font-style:normal;font-weight:800;letter-spacing:-.05em}
+.outro__open{font-size:var(--fs-note);max-width:32em;margin-top:1.4em;opacity:.8}
+.links{display:flex;flex-wrap:wrap;gap:10px;margin:8vh 0}
+.links a{font-size:clamp(18px,1.8vw,26px);font-weight:700;text-decoration:none;border:1.5px solid currentColor;border-radius:999px;padding:.55em 1.1em;transition:background .3s,color .3s}
+.links a:hover{background:var(--paper);color:var(--ink)}
+.links a.pink{border-color:var(--pink)}
+.sign{display:flex;justify-content:space-between;align-items:end;flex-wrap:wrap;gap:20px;font-family:var(--f-mono);font-size:var(--fs-mono)}
+.sign .serif{font-size:clamp(40px,5vw,80px)}
+
+/* ---------- index overlay ---------- */
+.index{position:fixed;inset:0;z-index:55;background:var(--ink);color:var(--paper);display:flex;flex-direction:column;padding:calc(max(var(--pad),22px) + 70px) var(--pad) var(--pad);
+  clip-path:inset(0 0 100% 0);transition:clip-path .9s var(--ease);visibility:hidden}
+body.index-open .index{clip-path:inset(0 0 0 0);visibility:visible}
+body.index-open{--hud-fg:var(--paper);--hud-inv:var(--ink);overflow:hidden}
+.index__track{flex:1;display:flex;gap:16px;overflow-x:auto;padding-bottom:16px;scroll-snap-type:x mandatory;align-items:stretch}
+.icard{flex:0 0 clamp(220px,24vw,340px);scroll-snap-align:start;border-radius:22px;padding:24px;background:var(--c);color:var(--cf,var(--ink));display:flex;flex-direction:column;justify-content:space-between;text-decoration:none;
+  transform:translateY(40px);opacity:0;transition:transform .8s var(--ease) var(--d),opacity .6s var(--d)}
+body.index-open .icard{transform:none;opacity:1}
+.icard:hover{transform:translateY(-8px)!important}
+.icard__n{font-family:var(--f-mono);font-size:15px}
+.icard__t{font-size:clamp(24px,2.3vw,38px);overflow-wrap:break-word;font-weight:800;letter-spacing:-.04em;line-height:.95}
+.icard__t .md{color:inherit;opacity:.5;font-size:.5em;display:block;margin-bottom:.4em}
+.index__foot{display:flex;flex-wrap:wrap;gap:10px;padding-top:18px}
+.index__foot .pill{border-color:currentColor;font-size:14px}
+
+/* ---------- plain reading mode (also the reduced-motion default) ---------- */
+.read{display:none}
+html.reading .read{display:block;max-width:40em;margin:0 auto;padding:18vh var(--pad) 20vh;font-size:clamp(17px,1.3vw,21px);line-height:1.55;color:var(--paper)}
+html.reading #film,html.reading .hint,html.reading .crumb,html.reading #watch{display:none!important}
+html.reading #bg{background:var(--ink)!important}
+html.reading body{--hud-fg:var(--paper)}
+.read .byl,.read blockquote{font-family:var(--f-mono)}
+.read h1{font-size:clamp(64px,12vw,170px);font-weight:800;letter-spacing:-.05em;line-height:.9;margin:.2em 0 .4em}
+.read h2,.read h3{color:var(--accent-lt);font-weight:700;letter-spacing:-.015em;margin:2.4em 0 .8em}
+.read p,.read ul{margin:0 0 1.1em}
+.read ul{list-style:disc;padding-left:1.3em}
+.read a{color:var(--pink)}
+.read .back{margin-top:4em}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
 </head>
 <body>
-  <div class="noise"></div>
-  <div class="cursor-glow" id="cursorGlow"></div>
+<div id="bg"></div>
+<div class="grain" aria-hidden="true"></div>
+<div class="cursor" aria-hidden="true"></div>
 
-  <header class="site-header">
-    <nav class="nav">
-      <a href="#home" class="brand">
-        <span class="brand-mark">RV</span>
-        <span>riya.varghese</span>
-      </a>
-
-      <button class="menu-button" id="menuButton" aria-label="Open menu">
-        <span></span>
-        <span></span>
-      </button>
-
-      <div class="nav-links" id="navLinks">
-        <a href="#about">About</a>
-        <a href="#portfolio">Portfolio</a>
-        <a href="#services">Services</a>
-        <a href="#skills">Skills</a>
-        <a href="#experience">Experience</a>
-        <a href="#contact" class="nav-pill">Contact</a>
-      </div>
-    </nav>
-  </header>
-
-  <main>
-    <section id="home" class="hero section">
-      <div class="hero-copy reveal">
-        <p class="eyebrow">Cybersecurity • Software Engineering • Offensive Security</p>
-        <h1>Cybersecurity learner building practical security instincts.</h1>
-        <p class="hero-subtitle">
-  I’m Riya — a B.Tech Computer Science graduate from the 2024 batch, currently working as a Compliance Analyst at Mitsogo | Hexnode. I’m actively transitioning into cybersecurity and software engineering with strong interest in ethical hacking, vulnerability assessment, red teaming, secure systems, and practical security research.
-</p>
-        <div class="hero-actions">
-          <a href="#portfolio" class="button primary">View work</a>
-          <a href="#contact" class="button secondary">Connect</a>
-        </div>
-      </div>
-
-      <div class="console reveal" aria-label="Cybersecurity status card">
-        <div class="console-top">
-          <div class="dots"><span></span><span></span><span></span></div>
-          <p>riya@security-lab</p>
-        </div>
-        <div class="console-body">
-          <p><span>$</span> whoami</p>
-          <p class="response">cybersecurity enthusiast · software engineering learner · IT professional</p>
-
-<p><span>$</span> current_focus</p>
-<p class="response">networking · linux systems · web security · full-stack development</p>
-
-<p><span>$</span> status</p>
-<p class="response success">seeking opportunities in cybersecurity, software engineering & IT</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="about" class="section about-grid">
-      <div class="section-title reveal">
-        <p class="eyebrow">About</p>
-        <h2>Curious, detail-oriented, and building depth one concept at a time.</h2>
-      </div>
-      <div class="about-text reveal">
-        <p>
-          My current work has given me exposure to tech environments, product education, communication, documentation, and content support. I’m now intentionally moving toward cybersecurity and IT by building technical foundations through structured learning and practical projects.
-        </p>
-        <p>
-          I’m interested in the calm, investigative side of security: understanding systems, documenting clearly, spotting weak points, and helping people make safer technical decisions.
-        </p>
-      </div>
-    </section>
-
-    <section id="portfolio" class="section">
-      <div class="section-title reveal">
-        <p class="eyebrow">Portfolio</p>
-        <h2>Projects that prove the learning.</h2>
-      </div>
-
-      <div class="project-grid">
-        <article class="project-card reveal">
-          <div class="card-number">01</div>
-          <h3>Networking Fundamentals Notes</h3>
-          <p>A structured beginner-friendly guide covering IP addressing, DNS, HTTP/HTTPS, ports, protocols, VPNs, and basic troubleshooting.</p>
-          <div class="tags"><span>Networking</span><span>Documentation</span></div>
-          <a href="https://github.com/Riyaaaaaaaaaaa/networking-fundamentals-notes" 
-   target="_blank" 
-   class="text-link">
-   View on GitHub →
-</a>
-        </article>
-
-        <article class="project-card reveal">
-          <div class="card-number">02</div>
-          <h3>Linux Command Practice Log</h3>
-          <p>A command-line learning journal covering file systems, permissions, logs, users, package management, and security-minded workflows.</p>
-          <div class="tags"><span>Linux</span><span>CLI</span></div>
-          <a href="https://github.com/Riyaaaaaaaaaaa/linux-survival-notes" 
-   target="_blank" 
-   class="text-link">
-   View on GitHub →
-</a>
-        </article>
-
-<article class="project-card reveal">
-  <div class="card-number">03</div>
-  <h3>Simple Login Authentication System</h3>
-  <p>
-    A secure authentication project featuring user signup, login validation,
-    password hashing concepts, session handling, and protected routes using
-    modern web development practices.
-  </p>
-
-  <div class="tags">
-    <span>Authentication</span>
-    <span>Security</span>
-    <span>Web Development</span>
+<header class="hud">
+  <div class="hud__l">
+    <a class="logo" href="#top" aria-label="Back to the top">
+      <!-- a little eye in a coffee ring -->
+      <svg viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="30" cy="30" r="27"/><circle cx="30" cy="30" r="22" stroke-dasharray="2 4"/><path d="M12 30c5-8 11-12 18-12s13 4 18 12c-5 8-11 12-18 12s-13-4-18-12z"/><circle cx="30" cy="30" r="6.5" fill="#c4502a" stroke="none"/><circle cx="32" cy="28" r="2" fill="currentColor" stroke="none"/></svg>
+    </a>
+    <span class="pill file" data-text="file"></span>
+    <span class="pill crumb" id="crumb"></span>
   </div>
-
-  <a href="https://github.com/Riyaaaaaaaaaaa/simple-login-auth-system"
-     target="_blank"
-     class="text-link">
-     View on GitHub →
-  </a>
-</article>
-<article class="project-card reveal">
-  <div class="card-number">04</div>
-
-  <h3>Phishing Detection Demo</h3>
-
-  <p>
-    A frontend-based cybersecurity project that analyzes suspicious emails and
-    URLs using simulated phishing detection techniques, security indicators,
-    and risk severity scoring.
-  </p>
-
-  <div class="tags">
-    <span>Cybersecurity</span>
-    <span>Phishing Detection</span>
-    <span>JavaScript</span>
+  <div class="hud__r">
+    <button class="pill" id="watch">watch</button>
+    <button class="pill pink" id="indexBtn" aria-expanded="false" aria-controls="index">index <span class="burger"><i></i><i></i></span></button>
   </div>
+</header>
 
-  <a href="https://github.com/Riyaaaaaaaaaaa/phishing-detection-demo"
-     target="_blank"
-     class="text-link">
-     View on GitHub →
-  </a>
-</article>
-        
-
-    <section id="services" class="section dark-panel">
-      <div class="section-title reveal">
-        <p class="eyebrow">Focus Areas</p>
-<h2>What I’m actively learning and building toward.</h2>
-</div>
-
-<div class="service-list">
-  <article class="service-item reveal">
-    <span>01</span>
-    <div>
-      <h3>Cybersecurity & Ethical Hacking</h3>
-      <p>Web security fundamentals, ethical hacking concepts, vulnerability assessment, reconnaissance, and hands-on security labs.</p>
-    </div>
-  </article>
-
-  <article class="service-item reveal">
-    <span>02</span>
-    <div>
-      <h3>Red Teaming Fundamentals</h3>
-      <p>Linux environments, networking concepts, enumeration techniques, attack surface analysis, and security testing workflows.</p>
-    </div>
-  </article>
-
-  <article class="service-item reveal">
-    <span>03</span>
-    <div>
-      <h3>Software & Web Development</h3>
-      <p>Building responsive web applications, learning full-stack development, and creating security-focused technical projects.</p>
-    </div>
-  </article>
-    </section>
-
-    <section id="skills" class="section">
-  <div class="section-title reveal">
-    <p class="eyebrow">Skills</p>
-    <h2>Skills I’m actively developing.</h2>
+<nav class="index" id="index" aria-label="Index">
+  <div class="index__track" id="indexTrack"></div>
+  <div class="index__foot">
+    <button class="pill" id="readBtn">read it as plain text</button>
+    <a class="pill" id="dl" href="#">download <span data-text="file"></span></a>
   </div>
+</nav>
 
-  <div class="skill-controls reveal" aria-label="Skill filters">
-    <button class="filter active" data-filter="all">All</button>
-    <button class="filter" data-filter="security">Cybersecurity</button>
-    <button class="filter" data-filter="development">Development</button>
-    <button class="filter" data-filter="systems">Systems</button>
-  </div>
+<main id="film"></main>
+<article class="read" id="read"></article>
+<p class="hint" aria-hidden="true"><span>scroll</span><i></i></p>
 
-  <div class="skills-grid" id="skillsGrid">
+<script>
+/* =====================================================================
+   EVERYTHING YOU'D WANT TO EDIT LIVES IN THIS ONE OBJECT.
+   The film, the index, the plain-text page and the .md download are all
+   written from it.
+   ===================================================================== */
+const ME = {
+  name: "Riya",
+  fullName: "Riya Ann Varghese",
+  file: "RIYA.md",
+  edited: "NOV 18, 2026",
+  quote: [
+    "> a working portfolio. notes-to-self, mostly.",
+    "> GRC engineer. ISO 27001 lead auditor. part-time attacker.",
+    "> last edited somewhere between an audit and a Kali VM."
+  ],
 
-    <article class="skill-card reveal" data-category="security">
-      <div class="skill-top"><h3>Web Security</h3><span>50%</span></div>
-      <div class="bar"><div style="width:50%"></div></div>
-      <p>OWASP Top 10, authentication concepts, input validation, and secure development basics.</p>
-    </article>
+  about: {
+    // *word* renders in the italic serif
+    say: "I turn regulations into code: controls and tests that tell you whether you're actually secure, not just *compliant.*",
+    note: "Senior GRC Engineer at UprootSecurity, building compliance automation for engineering teams, including the controls and tests behind GDPR compliance. 2+ years across information security, internal audit and compliance automation; ISO 27001:2022 Lead Auditor; Cybersecurity & AI from IIT Madras. I sit where security frameworks, privacy and technology meet, and I'm still learning the offensive side on purpose."
+  },
 
-    <article class="skill-card reveal" data-category="security">
-      <div class="skill-top"><h3>Ethical Hacking</h3><span>45%</span></div>
-      <div class="bar"><div style="width:45%"></div></div>
-      <p>Reconnaissance, enumeration, vulnerability testing fundamentals, and hands-on lab practice.</p>
-    </article>
+  // the big numbers
+  receipts: [
+    { big: "9.32", unit: "/10", label: "Professional Certificate in Cybersecurity & AI, IIT Madras · IITM Pravartak" },
+    { big: "27001", unit: "LA", label: "ISO 27001:2022 Lead Auditor, IRCA certified (BSI programme)" },
+    { big: "14", unit: "certs", label: "licenses & certifications, from encryption (IBM) to auditing" },
+    { big: "2", unit: "yrs", label: "from Product Evangelist to Senior GRC Engineer" }
+  ],
 
-    <article class="skill-card reveal" data-category="systems">
-      <div class="skill-top"><h3>Networking</h3><span>65%</span></div>
-      <div class="bar"><div style="width:65%"></div></div>
-      <p>TCP/IP, DNS, ports, protocols, VPN basics, and network troubleshooting concepts.</p>
-    </article>
+  principles: [
+    { title: ["compliant", "≠ secure."], c: "--pink", art: "eye",
+      body: ["A company can be ISO 27001 certified, SOC 2 compliant, and still have gaps.", "Controls on paper don't count. Controls that are implemented, monitored and *tested* do."] },
+    { title: ["make it", "testable."], c: "--butter", art: "burst",
+      body: ["If a requirement can't be checked, it's a wish.", "My job is turning GDPR and ISO clauses into tests a machine can run every day."] },
+    { title: ["think like", "the attacker."], c: "--cobalt", fg: "--paper", art: "rings",
+      body: ["Footprinting, recon, scanning, exploitation. Seeing how Kali talks to a target VM makes every policy 10x sharper.", "Security testing finds the weakness before someone else does."] },
+    { title: ["understand", "the system."], c: "--mint", art: "squiggle",
+      body: ["Windows and Linux internals, subnets, DNS, TCP flags. PowerShell and Bash to automate the boring parts.", "You can't audit what you don't understand."] }
+  ],
 
-    <article class="skill-card reveal" data-category="systems">
-      <div class="skill-top"><h3>Linux</h3><span>60%</span></div>
-      <div class="bar"><div style="width:60%"></div></div>
-      <p>Linux CLI, file systems, permissions, package management, logs, and basic system operations.</p>
-    </article>
+  work: [
+    { name: "Compliance Automation", kind: "@ UprootSecurity", c: "--pink",
+      tags: ["GRC engineering", "15+ frameworks", "ISO 27001 · SOC 2 · GDPR", "compliance automation"], url: "",
+      desc: "Building the controls and automated tests that power GDPR compliance in a compliance automation platform: translating regulatory requirements into structured, software-driven checks." },
+    { name: "ISO 27001 & SOC 2 Audits", kind: "@ Hexnode", c: "--butter",
+      tags: ["ISO 27001 internal audit", "SOC 2", "ISMS"], url: "",
+      desc: "Two years as Compliance Analyst: internal audits, information security controls, documentation and audit readiness for a global device-management SaaS." },
+    { name: "Phishing Detection Demo", kind: "cybersecurity", c: "--lilac",
+      tags: ["phishing detection", "risk scoring", "javascript"], url: "https://github.com/Riyaaaaaaaaaaa/phishing-detection-demo",
+      desc: "Paste a suspicious email or URL and it scores the risk, using simulated phishing-detection techniques and security indicators with a severity rating." },
+    { name: "Networking & Linux Notes", kind: "notes", c: "--mint",
+      tags: ["networking", "linux", "documentation"], url: "https://github.com/Riyaaaaaaaaaaa/networking-fundamentals-notes",
+      desc: "Public study guides: IP addressing, DNS, ports, protocols and VPNs, plus a Linux command journal on permissions, logs and security-minded workflows." }
+  ],
 
-    <article class="skill-card reveal" data-category="development">
-      <div class="skill-top"><h3>Frontend Development</h3><span>75%</span></div>
-      <div class="bar"><div style="width:75%"></div></div>
-      <p>HTML, CSS, JavaScript, responsive UI design, animations, and modern web interfaces.</p>
-    </article>
+  // Projects on the roadmap. Shown as unchecked boxes; when one ships,
+  // move it into `work` above with its repo link.
+  next: [
+    { name: "Auth System, Audited Against ASVS", proves: ["OWASP ASVS", "threat modelling", "appsec"],
+      desc: "My old login project, put through a real assessment: threat model, ASVS authentication checks with pass / fail evidence, then the fixes (rate limiting, lockout, secure cookies, MFA) and an OWASP ZAP scan before and after." },
+    { name: "Consent Snitch", proves: ["GDPR / ePrivacy", "browser extension", "javascript"],
+      desc: "A browser extension that watches what a site does *before* you click \"accept\": trackers that fire early, pre-ticked boxes, a reject button hidden three clicks deep. Each finding is mapped to the GDPR or ePrivacy rule it breaks, with a shareable report." },
+    { name: "The Audit Room", proves: ["ISO 27001 Annex A", "game design", "security awareness"],
+      desc: "A browser escape room where you play the auditor. Walk through a fictional startup's office and systems, spot the control failures (a password on a sticky note, an ex-employee's live account, backups never tested), and every find unlocks the Annex A control it violates. Training that people actually finish." },
+    { name: "Compliance-as-Code Auditor", proves: ["ISO 27001 Annex A", "CIS benchmarks", "python / bash"],
+      desc: "An open-source script that audits a Linux box against CIS benchmarks and maps every result to an ISO 27001 Annex A control, with evidence. The public version of what I do all day." },
+    { name: "Juice Shop VAPT Report", proves: ["web security", "OWASP Top 10", "reporting"],
+      desc: "A full penetration test of OWASP Juice Shop, written like a real client deliverable: scope, findings, CVSS severity, proof, and the fix for each." },
+    { name: "Active Directory Attack Lab", proves: ["red teaming", "windows / AD", "detection"],
+      desc: "A deliberately weak AD domain in VMs. Kerberoasting, AS-REP roasting and BloodHound paths, each written up with the control that should have stopped it." },
+    { name: "LLM Prompt-Injection Lab", proves: ["AI security", "adversarial AI", "ISO 42001"],
+      desc: "A small chatbot I attack on purpose: prompt injection, data leakage, jailbreaks. Then the guardrails, and how they'd map to AI governance controls." },
+    { name: "Mini SIEM: auth.log Watcher", proves: ["blue team", "linux logs", "MITRE ATT&CK"],
+      desc: "Parses Linux auth logs, flags brute-force and odd logins, and maps each alert to an ATT&CK technique. Continuous monitoring, made small." }
+  ],
 
-    <article class="skill-card reveal" data-category="development">
-      <div class="skill-top"><h3>Software Development</h3><span>55%</span></div>
-      <div class="bar"><div style="width:55%"></div></div>
-      <p>Python fundamentals, Git & GitHub workflows, debugging, APIs, and full-stack learning.</p>
-    </article>
+  log: [
+    { hash: "HEAD", title: "Senior GRC Engineer @ UprootSecurity", when: "Sep 2026 — now", where: "Kochi · hybrid",
+      desc: "Compliance automation for engineering teams. Building GDPR controls and tests, and turning regulatory requirements into product functionality." },
+    { hash: "5d0e2ac", title: "Compliance Analyst @ Hexnode", when: "Oct 2024 — Aug 2026", where: "Kochi",
+      desc: "ISO 27001, information security management, internal audits and audit readiness." },
+    { hash: "1b7f3e8", title: "Product Evangelist @ Hexnode", when: "Jul — Oct 2024", where: "Kochi",
+      desc: "First job. Learned the product, the customers, and how to explain technical things simply. Then switched into compliance." }
+  ],
 
-  </div>
-</section>
+  education: [
+    { hash: "e4a71b9", title: "ISO 27001:2022 Lead Auditor", when: "Sep 2026", where: "IRCA · BSI",
+      desc: "Information security management, risk assessment and the updated 2022 controls, from people who audit for a living." },
+    { hash: "9c32f10", title: "Cybersecurity & AI @ IIT Madras", when: "Jan — Oct 2026", where: "IITM Pravartak · grade 9.32",
+      desc: "Ethical hacking, network security, vulnerability assessment, SOC operations, digital forensics, cloud security, incident response, adversarial AI and anomaly detection." },
+    { hash: "0a20c24", title: "B.Tech Computer Science", when: "2020 — 2024", where: "College of Engineering Kallooppara",
+      desc: "IEEE, NSS volunteer, and Document Coordinator for the Placement Cell. MERN stack and Node.js on the side." }
+  ],
 
-     <section id="experience" class="section experience-section">
-      <div class="section-title reveal">
-        <p class="eyebrow">Experience</p>
-        <h2>Professional path and learning timeline.</h2>
-      </div>
 
-      <div class="timeline">
-        <article class="timeline-item reveal">
-          <div class="timeline-year">Now</div>
-          <div class="timeline-content">
-            <h3>Compliance Analyst — Mitsogo | Hexnode</h3>
-<p>
-  Working in a technology environment with exposure to compliance
-  processes, documentation, communication systems,
-  product workflows, and structured operational support.
-</p>
-          </div>
-        </article>
-        <article class="timeline-item reveal">
-          <div class="timeline-year">2026</div>
-          <div class="timeline-content">
-            <h3>Cybersecurity & AI Professional Program</h3>
-<p>
-  Currently pursuing a professional certification program in
-  Cybersecurity and AI through IITM Pravartak while building
-  foundations in networking, Linux, web security,
-  and practical security labs.
-</p>
-            </div>
-        </article>
-        <article class="timeline-item reveal">
-          <div class="timeline-year">Next</div>
-          <div class="timeline-content">
-            <h3>Target Roles</h3>
-<p>
-  Open to cybersecurity, software engineering,
-  frontend development, Ethical Hacker, Red team, 
-  SOC analyst trainee, secure systems, and practical security research.
-</p>
-            </div>
-        </article>
-      </div>
-    </section>
+  stop: [
+    "treating a passed audit as \"secure\"",
+    "writing controls nobody can test",
+    "waiting until I feel \"ready\"",
+    "keeping my notes private"
+  ],
+  more: [
+    "break it in a lab, then write the control",
+    "automate the checklist",
+    "publish the notes, mess and all",
+    "parler français (un peu)"
+  ],
 
-    <section id="contact" class="section contact-section">
-      <div class="contact-card reveal">
-        <p class="eyebrow">Contact</p>
-        <h2>Let’s connect before the next build.</h2>
-        <p>
-          Open to cybersecurity learning opportunities, ethical hacking, penetration testing, VAPT, Red team roles and beginner-friendly security projects.
-        </p>
-        <div class="hero-actions center">
-          <a href="mailto:riya.ann.2501@gmail.com?subject=Portfolio%20Inquiry"
-   class="button primary">
-   Email Me
-</a>
-          <a href="https://www.linkedin.com/in/riya-ann-varghese/" target="_blank" rel="noopener" class="button secondary">LinkedIn</a>
-          <a href="https://github.com/Riyaaaaaaaaaaa" target="_blank" rel="noopener" class="button secondary">GitHub</a>
-        </div>
-      </div>
-    </section>
-  </main>
+  outro: "Compliance is the starting point. *Security is the bigger picture.*",
+  open: "Open to GRC engineering, compliance automation, security assurance and security SaaS roles, in India or across Europe (happy to relocate).",
+  links: [
+    { label: "email", url: "mailto:riya.ann.2501@gmail.com?subject=Portfolio%20Inquiry", pink: true },
+    { label: "linkedin", url: "https://www.linkedin.com/in/riya-ann-varghese/" },
+    { label: "github", url: "https://github.com/Riyaaaaaaaaaaa" }
+  ],
+  sign: "— r."
+};
 
-  <footer class="footer">
-    <p>© <span id="year"></span> Riya Ann Varghese. Built with HTML, CSS & JavaScript.</p>
-  </footer>
+/* ===================================================================== */
+const $ = (s, el = document) => el.querySelector(s);
+const esc = s => s.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const rich = s => esc(s).replace(/\*(.+?)\*/g, "<em>$1</em>");
+const col = v => `var(${v})`;
+const [base, ext] = ME.file.split(".");
 
-  <script src="script.js"></script>
+document.querySelectorAll('[data-text="file"]').forEach(el =>
+  el.innerHTML = el.classList.contains("pill") ? `${esc(ME.file)} <i class="dot"></i>` : esc(ME.file));
+
+/* simple line-art for the principle rooms */
+const ART = {
+  eye: `<svg viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="2"><circle cx="100" cy="100" r="96"/><path d="M20 100c22-36 48-54 80-54s58 18 80 54c-22 36-48 54-80 54s-58-18-80-54z"/><circle cx="100" cy="100" r="30" fill="currentColor"/><circle cx="110" cy="90" r="8" fill="var(--c)" stroke="none"/></svg>`,
+  burst: `<svg viewBox="0 0 200 200" fill="currentColor"><path d="M100 0l14 62 52-36-36 52 62 14-62 14 36 52-52-36-14 62-14-62-52 36 36-52L0 100l62-14-36-52 52 36z"/></svg>`,
+  rings: `<svg viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="2"><circle cx="100" cy="100" r="96"/><circle cx="100" cy="100" r="72" stroke-dasharray="4 8"/><circle cx="100" cy="100" r="48"/><circle cx="100" cy="100" r="24" fill="currentColor"/><path d="M100 0v200M0 100h200"/></svg>`,
+  squiggle: `<svg viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="round"><path d="M20 40c30-30 50 30 80 0s50 30 80 0M20 100c30-30 50 30 80 0s50 30 80 0M20 160c30-30 50 30 80 0s50 30 80 0"/></svg>`
+};
+
+const words = (s) => {
+  const parts = s.split(/(\*[^*]+\*)/).filter(Boolean);
+  const out = []; parts.forEach(p => {
+    const it = p.startsWith("*"); p.replace(/\*/g, "").split(/\s+/).filter(Boolean).forEach(w => out.push(it ? `<em>${esc(w)}</em>` : esc(w)));
+  });
+  return { html: out.map((w, i) => `<span class="w" style="--i:${i}">${w}</span>`).join(" "), n: out.length };
+};
+
+/* ---------- build the film ---------- */
+const film = $("#film");
+const scenes = [];
+const add = (html) => film.insertAdjacentHTML("beforeend", html);
+
+const title = [...base].map(ch => `<span class="ch">${esc(ch)}</span>`).join("");
+add(`<section class="scene open" id="top" data-scene data-bg="--cobalt" data-crumb="">
+  <div class="stick"><i class="open__sun"></i><i class="open__floor"></i>
+    <div class="wrap open__set">
+      <p class="byline">${esc(ME.fullName.toUpperCase())} · ${esc(ME.edited)}</p>
+      <h1 class="title"><span class="mask">${title}</span><span class="md">.${esc(ext)}</span></h1>
+      <blockquote class="quote">${ME.quote.map((q, i) => `<p style="transition-delay:${1.1 + i * .25}s">${esc(q)}</p>`).join("")}</blockquote>
+    </div></div></section>`);
+
+const ab = words(ME.about.say);
+add(`<section class="scene say" id="about" data-scene data-bg="--ink" data-crumb="what this file is">
+  <div class="stick"><div class="wrap">
+    <h2 class="h2">## what this file is</h2>
+    <p class="words" style="--n:${ab.n}">${ab.html}</p>
+    <p class="note">${rich(ME.about.note)}</p>
+  </div></div></section>`);
+
+add(`<section class="scene receipts" id="receipts" data-scene data-bg="--ink" data-crumb="receipts">
+  <div class="wrap"><h2 class="h2">## receipts</h2>
+  <div class="rc-grid">${ME.receipts.map((r, i) => `<div class="rc io" style="--d:${i * .12}s"><p class="rc__big">${esc(r.big)}<span class="md">${esc(r.unit || "")}</span></p><p class="rc__l">${esc(r.label)}</p></div>`).join("")}</div>
+  </div></section>`);
+
+ME.principles.forEach((p, i) => {
+  const n = String(i + 1).padStart(2, "0");
+  add(`<section class="scene room" id="p${i + 1}" data-scene data-bg="${p.c}" data-crumb="${esc(p.title.join(" "))}" style="--fg:${col(p.fg || "--ink")};--c:${col(p.c)}">
+    <div class="stick"><div class="wrap">
+      <p class="room__n"><span class="md" style="color:inherit;opacity:.6">###</span> ${n} / how I work</p>
+      <h2 class="room__big">${p.title.map((l, j) => `<span class="line"><span style="--i:${j}">${esc(l)}</span></span>`).join("")}</h2>
+      <div class="room__body">${p.body.map(b => `<p>${rich(b)}</p>`).join("")}</div>
+    </div><div class="room__art" aria-hidden="true">${ART[p.art] || ""}</div></div></section>`);
+});
+
+add(`<section class="scene work" id="work" data-scene data-bg="--paper" data-hud="light" data-crumb="selected work">
+  <div class="work__head"><h2 class="h2">## selected work</h2><p class="big">Things I made<br>and would make again.</p></div>
+  <div class="cards">${ME.work.map((w, i) => `
+    <article class="card" style="--i:${i};--c:${col(w.c)};--cf:${col(w.fg || "--ink")};--r:${(i % 2 ? 1 : -1) * (0.6 + i * .3)}deg">
+      <p class="card__n">### 0${i + 1}</p><p class="card__yr">${esc(w.kind)}</p>
+      <h3><span class="md">#</span>${esc(w.name)}</h3>
+      <div><p class="card__d">${rich(w.desc)}</p><ul class="card__tags">${w.tags.map(t => `<li>${esc(t)}</li>`).join("")}</ul></div>
+      ${w.url ? `<a class="card__go" href="${esc(w.url)}" aria-label="Open ${esc(w.name)}">→</a>` : ""}
+    </article>`).join("")}</div></section>`);
+
+add(`<section class="scene next" id="next" data-scene data-bg="--butter" data-hud="light" data-crumb="building next">
+  <div class="wrap"><h2 class="h2">## building next</h2><p class="big">On the bench.<br>Not shipped yet.</p>
+  ${ME.next.map(n => `<div class="todo io"><span class="todo__box">[<b>&nbsp;</b>]</span><h3>${esc(n.name)}</h3>
+    <p>${rich(n.desc)}</p><ul>${n.proves.map(t => `<li>${esc(t)}</li>`).join("")}</ul></div>`).join("")}
+  </div></section>`);
+
+add(`<section class="scene log" id="log" data-scene data-bg="--forest" data-crumb="where I've worked">
+  <div class="wrap"><h2 class="h2">## where I've worked</h2>
+  <p class="log__cmd"><b>~/${esc(base.toLowerCase())}</b> $ git log --author=${esc(ME.name.toLowerCase())} --oneline</p>
+  ${ME.log.map(l => `<div class="commit io"><span class="commit__hash">${esc(l.hash)}</span><p class="commit__t">${esc(l.title)}</p>
+    <p class="commit__m">${esc(l.when)}${l.where ? ` · ${esc(l.where)}` : ""}</p><p class="commit__d">${rich(l.desc)}</p></div>`).join("")}
+  </div></section>`);
+
+const li = (arr) => arr.map((s, i) => `<li style="--d:${i * .15}s"><span>${esc(s)}</span></li>`).join("");
+add(`<section class="scene log edu" id="edu" data-scene data-bg="--cobalt" data-crumb="where I've learned">
+  <div class="wrap"><h2 class="h2">## where I've learned</h2>
+  <p class="log__cmd"><b>~/${esc(base.toLowerCase())}</b> $ ls ./education ./certifications</p>
+  ${ME.education.map(l => `<div class="commit io"><span class="commit__hash">${esc(l.hash)}</span><p class="commit__t">${esc(l.title)}</p>
+    <p class="commit__m">${esc(l.when)}${l.where ? ` · ${esc(l.where)}` : ""}</p><p class="commit__d">${rich(l.desc)}</p></div>`).join("")}
+  </div></section>`);
+
+add(`<section class="scene lists" id="lists" data-scene data-bg="--pink" data-hud="light" data-crumb="stop / more">
+  <div class="wrap">
+    <div><h2><span class="md">## things I'm trying to stop doing</span>stop.</h2><ul class="stop io">${li(ME.stop)}</ul></div>
+    <div><h2><span class="md">## things I'm trying to do more</span>more.</h2><ul class="more io">${li(ME.more)}</ul></div>
+  </div></section>`);
+
+add(`<section class="scene outro" id="contact" data-scene data-bg="--ink" data-crumb="say hi">
+  <div class="wrap"><h2 class="h2">## say hi</h2><p class="outro__big">${rich(ME.outro)}</p><p class="outro__open">${esc(ME.open)}</p>
+    <div class="links">${ME.links.map(l => `<a href="${esc(l.url)}"${l.pink ? ' class="pink"' : ""}>${esc(l.label)}</a>`).join("")}</div></div>
+  <div class="wrap sign"><span>${esc(ME.file)} · last touched ${esc(ME.edited.toLowerCase())}</span><span class="serif">${esc(ME.sign)}</span></div>
+</section>`);
+
+/* ---------- the same file, as markdown ---------- */
+const strip = s => s.replace(/\*(.+?)\*/g, "_$1_");
+function toMarkdown() {
+  const L = [];
+  L.push(`${ME.fullName.toUpperCase()} · ${ME.edited}`, "", `# ${ME.file}`, "", ...ME.quote, "",
+    "## what this file is", "", strip(ME.about.say), "", strip(ME.about.note), "", "## receipts", "", ...ME.receipts.map(r => `- **${r.big}${r.unit ? " " + r.unit : ""}** — ${r.label}`), "", "## how I work", "");
+  ME.principles.forEach((p, i) => L.push(`### ${i + 1}. ${p.title.join(" ")}`, "", ...p.body.map(strip).flatMap(b => [b, ""])));
+  L.push("## selected work", "");
+  ME.work.forEach(w => L.push(`### ${w.name} (${w.kind})`, "", strip(w.desc), "", `${w.tags.join(" · ")}${w.url ? ` — ${w.url}` : ""}`, ""));
+  L.push("## building next", "", ...ME.next.map(n => `- [ ] **${n.name}** — ${strip(n.desc)}`), "");
+  const ml = l => `- **${l.title}** — ${l.when}${l.where ? `, ${l.where}` : ""}. ${strip(l.desc)}`;
+  L.push("## where I've worked", "", ...ME.log.map(ml), "", "## where I've learned", "", ...ME.education.map(ml), "");
+  L.push("## things I'm trying to stop doing", "", ...ME.stop.map(s => `- ${s}`), "");
+  L.push("## things I'm trying to do more", "", ...ME.more.map(s => `- ${s}`), "");
+  L.push("## say hi", "", ME.open, "", ...ME.links.map(l => `- [${l.label}](${l.url})`), "", strip(ME.outro), "", ME.sign, "");
+  return L.join("\n");
+}
+$("#read").innerHTML = `
+  <p class="byl">${esc(ME.fullName.toUpperCase())} · ${esc(ME.edited)}</p><h1>${esc(ME.file)}</h1>
+  <blockquote>${ME.quote.map(q => `<p>${esc(q)}</p>`).join("")}</blockquote>
+  <h2>## what this file is</h2><p>${rich(ME.about.say)}</p><p>${rich(ME.about.note)}</p>
+  <h2>## receipts</h2><ul>${ME.receipts.map(r => `<li><b>${esc(r.big)} ${esc(r.unit || "")}</b> — ${esc(r.label)}</li>`).join("")}</ul>
+  <h2>## how I work</h2>${ME.principles.map((p, i) => `<h3>### ${i + 1}. ${esc(p.title.join(" "))}</h3>${p.body.map(b => `<p>${rich(b)}</p>`).join("")}`).join("")}
+  <h2>## selected work</h2>${ME.work.map(w => `<h3>### ${esc(w.name)} (${esc(w.kind)})</h3><p>${rich(w.desc)}</p><p>${w.url ? `<a href="${esc(w.url)}">${esc(w.tags.join(" · "))}</a>` : esc(w.tags.join(" · "))}</p>`).join("")}
+  <h2>## building next</h2><ul>${ME.next.map(n => `<li>[ ] <b>${esc(n.name)}</b> — ${rich(n.desc)}</li>`).join("")}</ul>
+  <h2>## where I've worked</h2><ul>${ME.log.map(l => `<li><b>${esc(l.title)}</b> — ${esc(l.when)}${l.where ? `, ${esc(l.where)}` : ""}. ${rich(l.desc)}</li>`).join("")}</ul>
+  <h2>## where I've learned</h2><ul>${ME.education.map(l => `<li><b>${esc(l.title)}</b> — ${esc(l.when)}${l.where ? `, ${esc(l.where)}` : ""}. ${rich(l.desc)}</li>`).join("")}</ul>
+  <h2>## things I'm trying to stop doing</h2><ul>${ME.stop.map(s => `<li>${esc(s)}</li>`).join("")}</ul>
+  <h2>## things I'm trying to do more</h2><ul>${ME.more.map(s => `<li>${esc(s)}</li>`).join("")}</ul>
+  <h2>## say hi</h2><p>${esc(ME.open)}</p><ul>${ME.links.map(l => `<li><a href="${esc(l.url)}">${esc(l.label)}</a></li>`).join("")}</ul>
+  <p>${rich(ME.outro)}</p><p>${esc(ME.sign)}</p>
+  <p class="back"><button class="pill pink" id="filmBtn">watch it as a film instead</button></p>`;
+
+const dl = $("#dl");
+dl.href = URL.createObjectURL(new Blob([toMarkdown()], { type: "text/markdown" }));
+dl.download = ME.file;
+
+/* ---------- index ---------- */
+const idx = [
+  { id: "top", t: ME.file, h: "#", c: "--cobalt", fg: "--paper" },
+  { id: "about", t: "what this file is", h: "##", c: "--paper" },
+  { id: "receipts", t: "receipts", h: "##", c: "--accent" },
+  ...ME.principles.map((p, i) => ({ id: `p${i + 1}`, t: p.title.join(" "), h: `### 0${i + 1}`, c: p.c, fg: p.fg })),
+  { id: "work", t: "selected work", h: "##", c: "--lilac" },
+  { id: "next", t: "building next", h: "##", c: "--butter" },
+  { id: "log", t: "where I've worked", h: "##", c: "--forest", fg: "--paper" },
+  { id: "edu", t: "where I've learned", h: "##", c: "--cobalt", fg: "--paper" },
+  { id: "lists", t: "stop / more", h: "##", c: "--pink" },
+  { id: "contact", t: "say hi", h: "##", c: "--accent" }
+];
+$("#indexTrack").innerHTML = idx.map((x, i) => `<a class="icard" href="#${x.id}" style="--c:${col(x.c)};--cf:${col(x.fg || "--ink")};--d:${.15 + i * .05}s">
+  <span class="icard__n">${String(i).padStart(2, "0")}</span><span class="icard__t"><span class="md">${esc(x.h)}</span>${esc(x.t)}</span></a>`).join("");
+
+const body = document.body, idxBtn = $("#indexBtn");
+const setIndex = (open) => { body.classList.toggle("index-open", open); idxBtn.setAttribute("aria-expanded", open); idxBtn.firstChild.textContent = open ? "close " : "index "; };
+idxBtn.addEventListener("click", () => setIndex(!body.classList.contains("index-open")));
+$("#indexTrack").addEventListener("click", e => { if (e.target.closest("a")) setIndex(false); });
+addEventListener("keydown", e => { if (e.key === "Escape") setIndex(false); });
+
+/* ---------- reading mode ---------- */
+const root = document.documentElement;
+const reading = (on) => { root.classList.toggle("reading", on); setIndex(false); scrollTo(0, 0); };
+$("#readBtn").addEventListener("click", () => reading(true));
+document.addEventListener("click", e => { if (e.target.id === "filmBtn") reading(false); });
+if (matchMedia("(prefers-reduced-motion: reduce)").matches) root.classList.add("reading");
+
+/* ---------- scroll engine ---------- */
+const sceneEls = [...document.querySelectorAll("[data-scene]")];
+const bg = $("#bg"), crumb = $("#crumb");
+let active = null, ticking = false;
+function frame() {
+  ticking = false;
+  const vh = innerHeight;
+  body.classList.toggle("scrolled", scrollY > 40);
+  for (const s of sceneEls) {
+    const r = s.getBoundingClientRect();
+    const span = Math.max(1, r.height - vh);
+    const p = Math.min(1, Math.max(0, -r.top / span));
+    s.style.setProperty("--p", p.toFixed(4));
+    if (r.top <= vh * .5 && r.bottom > vh * .5 && active !== s) {
+      active = s;
+      bg.style.backgroundColor = getComputedStyle(root).getPropertyValue(s.dataset.bg);
+      body.dataset.hud = s.dataset.hud || "dark";
+      const c = s.dataset.crumb;
+      crumb.classList.toggle("on", !!c);
+      if (c) crumb.innerHTML = `<span class="md">##</span> ${esc(c)}`;
+    }
+  }
+}
+const req = () => { if (!ticking) { ticking = true; requestAnimationFrame(frame); } };
+addEventListener("scroll", req, { passive: true });
+addEventListener("resize", req);
+frame();
+
+/* reveal-on-view */
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: .25 });
+document.querySelectorAll(".io").forEach(el => io.observe(el));
+
+/* ---------- watch: the film plays itself, any input hands it back ---------- */
+const watchBtn = $("#watch");
+let watching = false, last = 0;
+function play(t) {
+  if (!watching) return;
+  const dt = last ? t - last : 16; last = t;
+  scrollBy(0, dt * .11);
+  if (innerHeight + scrollY >= document.documentElement.scrollHeight - 2) return stopWatch();
+  requestAnimationFrame(play);
+}
+function stopWatch() { watching = false; watchBtn.textContent = "watch"; }
+watchBtn.addEventListener("click", () => {
+  if (watching) return stopWatch();
+  watching = true; last = 0; watchBtn.textContent = "scroll to stop"; requestAnimationFrame(play);
+});
+["wheel", "touchstart", "keydown"].forEach(ev => addEventListener(ev, () => watching && stopWatch(), { passive: true }));
+
+/* ---------- cursor ---------- */
+const cur = $(".cursor");
+addEventListener("pointermove", e => {
+  cur.style.transform = `translate(${e.clientX}px,${e.clientY}px)`;
+  cur.classList.toggle("big", !!e.target.closest("a,button"));
+}, { passive: true });
+
+/* curtain up */
+const go = () => requestAnimationFrame(() => body.classList.add("ready"));
+document.fonts ? document.fonts.ready.then(go) : addEventListener("load", go);
+setTimeout(go, 1500);
+</script>
 </body>
 </html>
