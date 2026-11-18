@@ -329,6 +329,9 @@ const ME = {
     { name: "ISO 27001 & SOC 2 Audits", kind: "@ Hexnode", c: "--butter",
       tags: ["ISO 27001 internal audit", "SOC 2", "ISMS"], url: "",
       desc: "Two years as Compliance Analyst: internal audits, information security controls, documentation and audit readiness for a global device-management SaaS." },
+    { name: "Consent Snitch", kind: "browser extension · v0.1", c: "--sky",
+      tags: ["GDPR / ePrivacy", "EDPB guidance", "chrome extension", "javascript"], url: "https://github.com/Riyaaaaaaaaaaa/consent-snitch",
+      desc: "Catches what a website does *before* you click \"accept\": trackers that fire early, cookies set without consent, pre-ticked boxes, a missing reject button, an accept button designed to win. Every finding is graded and mapped to the GDPR, ePrivacy or EDPB rule it breaks. Runs entirely in the browser; nothing leaves it." },
     { name: "Phishing Detection Demo", kind: "cybersecurity", c: "--lilac",
       tags: ["phishing detection", "risk scoring", "javascript"], url: "https://github.com/Riyaaaaaaaaaaa/phishing-detection-demo",
       desc: "Paste a suspicious email or URL and it scores the risk, using simulated phishing-detection techniques and security indicators with a severity rating." },
@@ -342,8 +345,6 @@ const ME = {
   next: [
     { name: "Auth System, Audited Against ASVS", proves: ["OWASP ASVS", "threat modelling", "appsec"],
       desc: "My old login project, put through a real assessment: threat model, ASVS authentication checks with pass / fail evidence, then the fixes (rate limiting, lockout, secure cookies, MFA) and an OWASP ZAP scan before and after." },
-    { name: "Consent Snitch", proves: ["GDPR / ePrivacy", "browser extension", "javascript"],
-      desc: "A browser extension that watches what a site does *before* you click \"accept\": trackers that fire early, pre-ticked boxes, a reject button hidden three clicks deep. Each finding is mapped to the GDPR or ePrivacy rule it breaks, with a shareable report." },
     { name: "The Audit Room", proves: ["ISO 27001 Annex A", "game design", "security awareness"],
       desc: "A browser escape room where you play the auditor. Walk through a fictional startup's office and systems, spot the control failures (a password on a sticky note, an ex-employee's live account, backups never tested), and every find unlocks the Annex A control it violates. Training that people actually finish." },
     { name: "Compliance-as-Code Auditor", proves: ["ISO 27001 Annex A", "CIS benchmarks", "python / bash"],
